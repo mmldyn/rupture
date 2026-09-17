@@ -1,10 +1,15 @@
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class TimeOfDayManager : MonoBehaviour
 {
     [Header("Referensi Objek")]
     [Tooltip("Tarik Directional Light (Matahari) dari Hierarchy ke sini")]
     public Light sunLight; 
+    
+    [Header("Efek Langit Malam")]
+    [Tooltip("Tarik objek Bintang_Malam dari Hierarchy ke sini")]
+    public ParticleSystem bintangMalam;
 
     [Header("Pengaturan Waktu")]
     [Tooltip("Waktu dalam format 24 Jam (Misal 14.5 = Jam 14:30)")]
@@ -13,42 +18,101 @@ public class TimeOfDayManager : MonoBehaviour
 
     [Header("Sistem Pengacakan (Saat Mulai)")]
     public bool randomizeOnStart = true;
-    
-    [Tooltip("Batas waktu paling pagi saat diacak")]
     public float minRandomTime = 7.0f; // Jam 7 pagi
-    
-    [Tooltip("Batas waktu paling sore saat diacak")]
     public float maxRandomTime = 16.0f; // Jam 4 sore
+
+    [Header("Pengaturan Warna Kabut (Fog)")]
+    public bool gunakanWarnaKabutDinamis = true;
+    public Color fogPagi = new Color(0.8f, 0.85f, 0.9f); 
+    public Color fogSiang = new Color(0.9f, 0.9f, 0.95f);
+    public Color fogSore = new Color(0.9f, 0.6f, 0.4f);  
+    public Color fogMalam = new Color(0.05f, 0.05f, 0.08f); // Dibuat lebih gelap agar bintang terlihat jelas
 
     void Start()
     {
-        if (randomizeOnStart)
+        if (Application.isPlaying && randomizeOnStart)
         {
-            // Mengacak nilai dari batas minimum ke maksimum
             currentTime = Random.Range(minRandomTime, maxRandomTime);
             Debug.Log($"<color=yellow>[Sistem Cuaca]</color> Waktu dimulai secara acak pada pukul: <b>{currentTime:F1}</b>");
         }
-
-        // Terapkan rotasi saat game dimulai
         UpdateSunRotation();
     }
 
-    // Fungsi sakti: Meng-update langit secara Real-Time di Editor meskipun game BELUM di Play!
     void OnValidate()
     {
         UpdateSunRotation();
+    }
+
+    void Update()
+    {
+        // Opsional: Jika Anda ingin membuat waktu berjalan otomatis (siang berganti malam secara realtime)
+        // currentTime += Time.deltaTime * 0.05f; 
+        // if (currentTime > 24f) currentTime = 0f;
+        // UpdateSunRotation();
     }
 
     public void UpdateSunRotation()
     {
         if (sunLight == null) return;
 
-        // RUMUS KONVERSI JAM KE DERAJAT ROTASI:
-        // (Jam / 24) * 360 derajat - 90 derajat offset.
-        // Minus 90 memastikan jam 06.00 ada di horizon (0 derajat rotasi X)
         float sunRotationX = (currentTime / 24f) * 360f - 90f;
-        
-        // Aplikasikan rotasi. Sumbu Y (30f) dibuat agar matahari tidak terbit lurus utara-selatan
         sunLight.transform.rotation = Quaternion.Euler(sunRotationX, 30f, 0f);
+
+        if (gunakanWarnaKabutDinamis)
+        {
+            UpdateFogColor();
+        }
+        
+        UpdateBintang();
+    }
+
+    private void UpdateFogColor()
+    {
+        Color targetFogColor = fogMalam; 
+
+        if (currentTime >= 5f && currentTime < 8f) 
+        {
+            float t = (currentTime - 5f) / 3f;
+            targetFogColor = Color.Lerp(fogMalam, fogPagi, t);
+        } 
+        else if (currentTime >= 8f && currentTime < 15f) 
+        {
+            float t = (currentTime - 8f) / 7f;
+            targetFogColor = Color.Lerp(fogPagi, fogSiang, t);
+        } 
+        else if (currentTime >= 15f && currentTime < 18f) 
+        {
+            float t = (currentTime - 15f) / 3f;
+            targetFogColor = Color.Lerp(fogSiang, fogSore, t);
+        } 
+        else if (currentTime >= 18f && currentTime < 19f) 
+        {
+            float t = (currentTime - 18f) / 1f;
+            targetFogColor = Color.Lerp(fogSore, fogMalam, t);
+        } 
+        else 
+        {
+            targetFogColor = fogMalam;
+        }
+
+        RenderSettings.fogColor = targetFogColor;
+    }
+
+    private void UpdateBintang()
+    {
+        if (bintangMalam == null) return;
+
+        // Bintang aktif dari jam 18.00 sore hingga 05.30 pagi
+        bool isMalam = (currentTime >= 18f || currentTime < 5.5f);
+
+        // Mengaktifkan atau menonaktifkan GameObject Particle System secara langsung
+        if (bintangMalam.gameObject.activeSelf != isMalam)
+        {
+            bintangMalam.gameObject.SetActive(isMalam);
+            if (isMalam && !bintangMalam.isPlaying)
+            {
+                bintangMalam.Play();
+            }
+        }
     }
 }
