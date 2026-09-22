@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SesarLembang : MonoBehaviour
+
+public class AlurSesar : MonoBehaviour
 {
     [Header("Titik-titik Sepanjang Alur Sesar")]
     [Tooltip("Urutkan sesuai alur garis sesar dari satu ujung ke ujung lain")]
@@ -11,20 +12,14 @@ public class SesarLembang : MonoBehaviour
     public bool tampilkanGarisDiEditor = true;
     public Color warnaGaris = Color.red;
 
-    /// <summary>
-    /// Ambil satu titik acak di SEPANJANG garis sesar (interpolasi antar dua
-    /// titik terdekat yang berurutan), bukan cuma salah satu titik yang sudah
-    /// ada. Mengembalikan Vector3.zero kalau titik sesar kurang dari 2.
-    /// </summary>
     public Vector3 AmbilTitikAcakSepanjangSesar()
     {
         if (titikSesar == null || titikSesar.Count < 2)
         {
-            Debug.LogWarning("<color=yellow>[SesarLembang]</color> Titik sesar kurang dari 2, tidak bisa sampling sepanjang garis.");
+            Debug.LogWarning($"<color=yellow>[AlurSesar]</color> '{gameObject.name}': titik sesar kurang dari 2, tidak bisa sampling sepanjang garis.");
             return titikSesar != null && titikSesar.Count == 1 ? titikSesar[0].position : Vector3.zero;
         }
 
-        // Pilih segmen acak (antara titik ke-i dan ke-i+1)
         int indexSegmen = Random.Range(0, titikSesar.Count - 1);
         Vector3 titikA = titikSesar[indexSegmen].position;
         Vector3 titikB = titikSesar[indexSegmen + 1].position;
@@ -33,11 +28,6 @@ public class SesarLembang : MonoBehaviour
         return Vector3.Lerp(titikA, titikB, t);
     }
 
-    /// <summary>
-    /// Total panjang alur sesar (meter/unit), berguna kalau ingin sampling
-    /// yang proporsional terhadap panjang tiap segmen (segmen panjang lebih
-    /// sering kepilih daripada segmen pendek). Opsional, tidak dipakai versi dasar.
-    /// </summary>
     public float HitungPanjangTotal()
     {
         float total = 0f;

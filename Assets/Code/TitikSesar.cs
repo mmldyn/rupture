@@ -5,8 +5,8 @@ using System.Collections.Generic;
 public class GeneratorTitikSesarOtomatis : MonoBehaviour
 {
     [Header("Target")]
-    [Tooltip("Komponen SesarLembang yang list Titik Sesar-nya mau diisi otomatis")]
-    public SesarLembang targetSesar;
+    [Tooltip("Komponen AlurSesar yang list Titik Sesar-nya mau diisi otomatis")]
+    public AlurSesar targetSesar;
 
     [Header("Pengaturan")]
     [Range(3, 20)] public int jumlahTitik = 6;

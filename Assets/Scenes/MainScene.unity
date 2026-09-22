@@ -613,6 +613,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 26527414}
   m_CullTransparentMesh: 1
+--- !u!1 &27115387
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 27115388}
+  m_Layer: 0
+  m_Name: Titik_Auto_5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &27115388
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27115387}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.1435795, y: 0.6923763, z: 0.6923763, w: 0.1435795}
+  m_LocalPosition: {x: -0.3553611, y: 0.20715196, z: 0.0011083357}
+  m_LocalScale: {x: 0.0008440241, y: 0.0008440241, z: 0.0008440242}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 836403511}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &45342100
 GameObject:
   m_ObjectHideFlags: 0
@@ -977,6 +1008,16 @@ MonoBehaviour:
   gunakanInputPC: 0
   tombolInteraksiVR: {fileID: 83097790271614945, guid: c348712bda248c246b8c49b3db54643f,
     type: 3}
+  tombolLari: {fileID: 3496934956280710670, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
+  tombolJongkok: {fileID: 1806282044452013097, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
+  akarXROrigin: {fileID: 80099285}
+  pengaliKecepatanLari: 1.8
+  akselerasi: 8
+  kedalamanJongkok: 0.6
+  kecepatanTransisiJongkok: 2.5
+  pengaliKecepatanJongkok: 0.5
 --- !u!114 &80099291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6211,6 +6252,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 138967246}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &168597503
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 168597504}
+  m_Layer: 0
+  m_Name: Titik_Auto_6
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &168597504
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 168597503}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.1435795, y: 0.6923763, z: 0.6923763, w: 0.1435795}
+  m_LocalPosition: {x: 3.952453, y: -1.3001223, z: 0.0015945486}
+  m_LocalScale: {x: 0.0008440241, y: 0.0008440241, z: 0.0008440242}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 516393554}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &176159533
 GameObject:
   m_ObjectHideFlags: 0
@@ -6699,6 +6771,37 @@ MonoBehaviour:
   prefabDebu: {fileID: 5796156106419394571, guid: cab1587bc47f99147846519b1eacf332,
     type: 3}
   minimalKecepatan: 0.5
+--- !u!1 &247151079
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 247151080}
+  m_Layer: 0
+  m_Name: Titik_Auto_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &247151080
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247151079}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.1435795, y: 0.6923763, z: 0.6923763, w: 0.1435795}
+  m_LocalPosition: {x: 1.1925172, y: -0.18687712, z: 0.0020535486}
+  m_LocalScale: {x: 0.0008440241, y: 0.0008440241, z: 0.0008440242}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 516393554}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &272441887
 GameObject:
   m_ObjectHideFlags: 0
@@ -6950,6 +7053,14 @@ MonoBehaviour:
   rayOrigin: {fileID: 330585546}
   gunakanInputPC: 1
   tombolInteraksiVR: {fileID: 0}
+  tombolLari: {fileID: 0}
+  tombolJongkok: {fileID: 0}
+  akarXROrigin: {fileID: 0}
+  pengaliKecepatanLari: 1.8
+  akselerasi: 8
+  kedalamanJongkok: 0.6
+  kecepatanTransisiJongkok: 2.5
+  pengaliKecepatanJongkok: 0.5
 --- !u!1 &333471814
 GameObject:
   m_ObjectHideFlags: 0
@@ -7214,6 +7325,37 @@ MonoBehaviour:
   heightOffset: -0.1
   lockPitchRoll: 1
   followSpeed: 12
+--- !u!1 &395101709
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 395101710}
+  m_Layer: 0
+  m_Name: Titik_Auto_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &395101710
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395101709}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.1435795, y: 0.6923763, z: 0.6923763, w: 0.1435795}
+  m_LocalPosition: {x: -1.2067357, y: 0.78751034, z: 0.0011008788}
+  m_LocalScale: {x: 0.0008440241, y: 0.0008440241, z: 0.0008440242}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 836403511}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -7437,6 +7579,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 435640881}
   m_CullTransparentMesh: 1
+--- !u!1 &512618185
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 512618186}
+  m_Layer: 0
+  m_Name: Titik_Auto_4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &512618186
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512618185}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.1435795, y: 0.6923763, z: 0.6923763, w: 0.1435795}
+  m_LocalPosition: {x: -0.6230251, y: 0.41334984, z: 0.001073125}
+  m_LocalScale: {x: 0.0008440241, y: 0.0008440241, z: 0.0008440242}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 836403511}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &516393552
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7531,27 +7704,27 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 93b6f00def75f674099be4f2c8da23ea,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1721648418}
+      addedObject: {fileID: 706613342}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 93b6f00def75f674099be4f2c8da23ea,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 865017294}
+      addedObject: {fileID: 247151080}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 93b6f00def75f674099be4f2c8da23ea,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1248223830}
+      addedObject: {fileID: 1625745772}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 93b6f00def75f674099be4f2c8da23ea,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1750196230}
+      addedObject: {fileID: 755106047}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 93b6f00def75f674099be4f2c8da23ea,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1414537864}
+      addedObject: {fileID: 1548687829}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 93b6f00def75f674099be4f2c8da23ea,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1914795571}
+      addedObject: {fileID: 168597504}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 93b6f00def75f674099be4f2c8da23ea,
         type: 3}
@@ -7602,12 +7775,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   titikSesar:
-  - {fileID: 1721648418}
-  - {fileID: 865017294}
-  - {fileID: 1248223830}
-  - {fileID: 1750196230}
-  - {fileID: 1414537864}
-  - {fileID: 1914795571}
+  - {fileID: 706613342}
+  - {fileID: 247151080}
+  - {fileID: 1625745772}
+  - {fileID: 755106047}
+  - {fileID: 1548687829}
+  - {fileID: 168597504}
   tampilkanGarisDiEditor: 1
   warnaGaris: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &552187101
@@ -8230,6 +8403,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 680574760}
   m_CullTransparentMesh: 1
+--- !u!1 &706613341
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 706613342}
+  m_Layer: 0
+  m_Name: Titik_Auto_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &706613342
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706613341}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.1435795, y: 0.6923763, z: 0.6923763, w: 0.1435795}
+  m_LocalPosition: {x: 0.42743966, y: 0.006220635, z: 0.0015811031}
+  m_LocalScale: {x: 0.0008440241, y: 0.0008440241, z: 0.0008440242}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 516393554}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &748059793
 GameObject:
   m_ObjectHideFlags: 0
@@ -8396,6 +8600,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 748059793}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &755106046
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 755106047}
+  m_Layer: 0
+  m_Name: Titik_Auto_4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &755106047
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755106046}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.1435795, y: 0.6923763, z: 0.6923763, w: 0.1435795}
+  m_LocalPosition: {x: 2.8336153, y: -0.5562775, z: 0.0012886516}
+  m_LocalScale: {x: 0.0008440241, y: 0.0008440241, z: 0.0008440242}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 516393554}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &759430331
 GameObject:
   m_ObjectHideFlags: 0
@@ -8873,40 +9108,89 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: b2210d597d1e0274b9ee2bfce44fb678,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2072434145}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: b2210d597d1e0274b9ee2bfce44fb678,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 395101710}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: b2210d597d1e0274b9ee2bfce44fb678,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1724254817}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: b2210d597d1e0274b9ee2bfce44fb678,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 512618186}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: b2210d597d1e0274b9ee2bfce44fb678,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 27115388}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: b2210d597d1e0274b9ee2bfce44fb678,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2044795743}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b2210d597d1e0274b9ee2bfce44fb678,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 836403513}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b2210d597d1e0274b9ee2bfce44fb678,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 836403512}
   m_SourcePrefab: {fileID: 100100000, guid: b2210d597d1e0274b9ee2bfce44fb678, type: 3}
---- !u!1 &865017293
+--- !u!1 &836403510 stripped
 GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b2210d597d1e0274b9ee2bfce44fb678,
+    type: 3}
+  m_PrefabInstance: {fileID: 836403509}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 865017294}
-  m_Layer: 0
-  m_Name: Titik_Auto_2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &865017294
+--- !u!4 &836403511 stripped
 Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b2210d597d1e0274b9ee2bfce44fb678,
+    type: 3}
+  m_PrefabInstance: {fileID: 836403509}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &836403512
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 865017293}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.1435795, y: 0.6923763, z: 0.6923763, w: 0.1435795}
-  m_LocalPosition: {x: 1.1925172, y: -0.18687712, z: 0.0020535486}
-  m_LocalScale: {x: 0.0008440241, y: 0.0008440241, z: 0.0008440242}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 516393554}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 836403510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4b207c368cde2b44baa064bbc8309aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetSesar: {fileID: 836403513}
+  jumlahTitik: 6
+  hapusTitikLamaSebelumGenerate: 1
+--- !u!114 &836403513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836403510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bf37c9b6c68cef4bbe5a79fcf2660bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  titikSesar:
+  - {fileID: 2072434145}
+  - {fileID: 395101710}
+  - {fileID: 1724254817}
+  - {fileID: 512618186}
+  - {fileID: 27115388}
+  - {fileID: 2044795743}
+  tampilkanGarisDiEditor: 1
+  warnaGaris: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &872820614
 GameObject:
   m_ObjectHideFlags: 0
@@ -10757,37 +11041,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1241014644}
   m_CullTransparentMesh: 1
---- !u!1 &1248223829
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1248223830}
-  m_Layer: 0
-  m_Name: Titik_Auto_3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1248223830
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1248223829}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.1435795, y: 0.6923763, z: 0.6923763, w: 0.1435795}
-  m_LocalPosition: {x: 1.7978072, y: -0.3415218, z: 0.002089197}
-  m_LocalScale: {x: 0.0008440241, y: 0.0008440241, z: 0.0008440242}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 516393554}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1255584544
 GameObject:
   m_ObjectHideFlags: 0
@@ -16748,37 +17001,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!1 &1414537863
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1414537864}
-  m_Layer: 0
-  m_Name: Titik_Auto_5
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1414537864
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1414537863}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.1435795, y: 0.6923763, z: 0.6923763, w: 0.1435795}
-  m_LocalPosition: {x: 3.3005965, y: -0.78021103, z: 0.0013967304}
-  m_LocalScale: {x: 0.0008440241, y: 0.0008440241, z: 0.0008440242}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 516393554}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1435507463
 GameObject:
   m_ObjectHideFlags: 0
@@ -17617,6 +17839,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1235227529}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1548687828
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1548687829}
+  m_Layer: 0
+  m_Name: Titik_Auto_5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1548687829
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548687828}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.1435795, y: 0.6923763, z: 0.6923763, w: 0.1435795}
+  m_LocalPosition: {x: 3.3005965, y: -0.78021103, z: 0.0013967304}
+  m_LocalScale: {x: 0.0008440241, y: 0.0008440241, z: 0.0008440242}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 516393554}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1550461736
 GameObject:
@@ -18527,6 +18780,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jarakMaksimal: 0.5
   toleransiMentok: 2
+--- !u!1 &1625745771
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1625745772}
+  m_Layer: 0
+  m_Name: Titik_Auto_3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1625745772
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625745771}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.1435795, y: 0.6923763, z: 0.6923763, w: 0.1435795}
+  m_LocalPosition: {x: 1.7978072, y: -0.3415218, z: 0.002089197}
+  m_LocalScale: {x: 0.0008440241, y: 0.0008440241, z: 0.0008440242}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 516393554}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1656454816
 GameObject:
   m_ObjectHideFlags: 0
@@ -18885,37 +19169,6 @@ MonoBehaviour:
   panelStatusGempa: {fileID: 2001398467}
   teksRichter: {fileID: 1518649924}
   teksWaktu: {fileID: 2026414061}
---- !u!1 &1721648417
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1721648418}
-  m_Layer: 0
-  m_Name: Titik_Auto_1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1721648418
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1721648417}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.1435795, y: 0.6923763, z: 0.6923763, w: 0.1435795}
-  m_LocalPosition: {x: 0.42743966, y: 0.006220635, z: 0.0015811031}
-  m_LocalScale: {x: 0.0008440241, y: 0.0008440241, z: 0.0008440242}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 516393554}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1722233917
 GameObject:
   m_ObjectHideFlags: 0
@@ -19592,6 +19845,37 @@ MonoBehaviour:
     m_Reference: {fileID: -1636515391019944688, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
   m_ButtonPressPoint: 0.5
+--- !u!1 &1724254816
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1724254817}
+  m_Layer: 0
+  m_Name: Titik_Auto_3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1724254817
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724254816}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.1435795, y: 0.6923763, z: 0.6923763, w: 0.1435795}
+  m_LocalPosition: {x: -0.90455604, y: 0.60593545, z: 0.0011081811}
+  m_LocalScale: {x: 0.0008440241, y: 0.0008440241, z: 0.0008440242}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 836403511}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1733395164
 GameObject:
   m_ObjectHideFlags: 0
@@ -19772,37 +20056,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1746429937}
   m_CullTransparentMesh: 1
---- !u!1 &1750196229
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1750196230}
-  m_Layer: 0
-  m_Name: Titik_Auto_4
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1750196230
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1750196229}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.1435795, y: 0.6923763, z: 0.6923763, w: 0.1435795}
-  m_LocalPosition: {x: 2.8336153, y: -0.5562775, z: 0.0012886516}
-  m_LocalScale: {x: 0.0008440241, y: 0.0008440241, z: 0.0008440242}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 516393554}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1754170197
 GameObject:
   m_ObjectHideFlags: 0
@@ -20661,6 +20914,7 @@ GameObject:
   - component: {fileID: 1797772192}
   - component: {fileID: 1797772194}
   - component: {fileID: 1797772193}
+  - component: {fileID: 1797772195}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -20682,23 +20936,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   kumpulanEfekDebu: []
   gpsLineObject: {fileID: 176159533}
-  earthquakeDatabase:
-  - eventName: 09/07/19
-    duration: 10
-    richterScale: 7
-    kedalamanKm: 10
-    tanahLunak: 0
-    unityMagnitude: 0
-    fadeInTime: 2
-    fadeOutTime: 6
-  - eventName: 01/08/42
-    duration: 25
-    richterScale: 5
-    kedalamanKm: 1
-    tanahLunak: 1
-    unityMagnitude: 0
-    fadeInTime: 4
-    fadeOutTime: 6
   panicUI: {fileID: 1009951456}
   statusHUD: {fileID: 1720056442}
   earthquakeAudioSource: {fileID: 1797772189}
@@ -20716,17 +20953,46 @@ MonoBehaviour:
   kekuatanHapticMinimal: 0.15
   manajerRetakDinding: {fileID: 1797772194}
   manajerRetakLantai: {fileID: 1797772193}
+  pohonRoboh: {fileID: 1797772195}
   magnitudeThreshold: 3
   baseSlope: 0.075
   referenceDepthKm: 15
   maxShallowBonus: 1.5
   softSoilBonus: 0.8
-  pusatGempa: {fileID: 0}
   unitPerKm: 1000
-  jarakAcak: 1
-  jarakMinKm: 2
-  jarakMaksKm: 40
-  sesarLembang: {fileID: 516393556}
+  daftarSesar:
+  - namaSesar: Sesar Lembang
+    sesar: {fileID: 516393556}
+    aktif: 1
+    databaseGempa:
+    - eventName: 09/07/19
+      duration: 10
+      richterScale: 7
+      kedalamanKm: 10
+      tanahLunak: 0
+      unityMagnitude: 0
+      fadeInTime: 2
+      fadeOutTime: 6
+    - eventName: 24/04/24
+      duration: 5
+      richterScale: 8
+      kedalamanKm: 4
+      tanahLunak: 0
+      unityMagnitude: 0
+      fadeInTime: 3
+      fadeOutTime: 2
+  - namaSesar: Sesar Cileunyi - Tanjungsari
+    sesar: {fileID: 836403513}
+    aktif: 1
+    databaseGempa:
+    - eventName: 31/12/23
+      duration: 10
+      richterScale: 4.1
+      kedalamanKm: 7
+      tanahLunak: 0
+      unityMagnitude: 0
+      fadeInTime: 2
+      fadeOutTime: 3
   bobotSumbuGuncangan: {x: 1, y: 1, z: 1}
   playerVR: {fileID: 80099285}
   playerPC: {fileID: 1981301235}
@@ -20932,6 +21198,57 @@ MonoBehaviour:
   filterOrientasi: 0
   toleransiSudut: 25
   maksimalPercobaanSampling: 6
+--- !u!114 &1797772195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797772186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a463c9ff1fb5264e93ba4f0b016c752, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  srMinimalRoboh: 6
+  srPuncakRoboh: 8
+  persentaseMinimal: 0.1
+  persentasePuncak: 0.6
+  radiusRoboh: 80
+  maksPohonRoboh: 40
+  mulaiRobohPalingAwal: 0.25
+  mulaiRobohPalingAkhir: 0.8
+  rentangDurasiRetak: {x: 0.6, y: 1.4}
+  rentangSudutMiring: {x: 3, y: 6}
+  getaranPohon: 0.8
+  kecepatanRoboh: 1
+  pantulan: 0.25
+  putaranBatang: 15
+  gravitasi: 9.81
+  redamanUdara: 0.15
+  prefabAsapJatuh: {fileID: 2503274357630232607, guid: cab1587bc47f99147846519b1eacf332,
+    type: 3}
+  umurAsap: 8
+  sfxRetak:
+  - {fileID: 8300000, guid: 53dd7544d37db3c439ccccc3428b0b1d, type: 3}
+  sfxDedaunan:
+  - {fileID: 8300000, guid: 0ea8a34450df1eb4488dcb10e2992377, type: 3}
+  sfxJatuhDekat:
+  - {fileID: 8300000, guid: 8c41ee161031e81489dd0298476bb8c7, type: 3}
+  sfxJatuhJauh:
+  - {fileID: 8300000, guid: 283a7940f7826664bb48b196d3e00f1b, type: 3}
+  volumeSfx: 1
+  rentangPitch: {x: 0.85, y: 1.1}
+  jarakDekat: 40
+  jarakMaksSfx: 150
+  cutoffDekat: 22000
+  cutoffJauh: 1500
+  simulasiKecepatanSuara: 1
+  fadeSaatPohonDiam: 1
+  ambangDiam: 1
+  jedaDeteksiDiam: 0.4
+  jedaSebelumFade: 0.6
+  durasiFadeOut: 2.5
 --- !u!1 &1804404107
 GameObject:
   m_ObjectHideFlags: 0
@@ -21300,37 +21617,6 @@ Terrain:
   m_EnableHeightmapRayTracing: 1
   m_EnableTreesAndDetailsRayTracing: 0
   m_TreeMotionVectorModeOverride: 3
---- !u!1 &1914795570
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1914795571}
-  m_Layer: 0
-  m_Name: Titik_Auto_6
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1914795571
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1914795570}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.1435795, y: 0.6923763, z: 0.6923763, w: 0.1435795}
-  m_LocalPosition: {x: 3.952453, y: -1.3001223, z: 0.0015945486}
-  m_LocalScale: {x: 0.0008440241, y: 0.0008440241, z: 0.0008440242}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 516393554}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1923790569
 GameObject:
   m_ObjectHideFlags: 0
@@ -22372,6 +22658,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2035025467}
   m_CullTransparentMesh: 1
+--- !u!1 &2044795742
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2044795743}
+  m_Layer: 0
+  m_Name: Titik_Auto_6
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2044795743
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044795742}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.1435795, y: 0.6923763, z: 0.6923763, w: 0.1435795}
+  m_LocalPosition: {x: -0.13641892, y: 0.08225674, z: 0.0010704077}
+  m_LocalScale: {x: 0.0008440241, y: 0.0008440241, z: 0.0008440242}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 836403511}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2072347392
 GameObject:
   m_ObjectHideFlags: 0
@@ -22429,6 +22746,37 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!1 &2072434144
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2072434145}
+  m_Layer: 0
+  m_Name: Titik_Auto_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2072434145
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072434144}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.1435795, y: 0.6923763, z: 0.6923763, w: 0.1435795}
+  m_LocalPosition: {x: -1.4481679, y: 0.8907999, z: 0.0010768728}
+  m_LocalScale: {x: 0.0008440241, y: 0.0008440241, z: 0.0008440242}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 836403511}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2075538956
 GameObject:
   m_ObjectHideFlags: 0

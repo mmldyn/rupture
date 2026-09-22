@@ -4,6 +4,32 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
 [System.Serializable]
+public class SumberSesar
+{
+    [Tooltip("Nama tampilan sesar (jadi judul elemen di Inspector dan muncul di log). Kalau kosong, dipakai nama GameObject sesar.")]
+    public string namaSesar = "";
+    [Tooltip("Komponen AlurSesar yang dipakai sebagai sumber sampling episentrum")]
+    public AlurSesar sesar;
+    [Tooltip("Centang untuk mengikutsertakan sesar ini (beserta database gempanya) dalam pemilihan acak. Kosongkan untuk menonaktifkan sementara tanpa perlu hapus referensinya")]
+    public bool aktif = true;
+    [Tooltip("Database gempa khusus sesar ini. Saat sesar ini terpilih, gempa HANYA diambil dari list ini. Sesar dengan database kosong tidak akan ikut terpilih.")]
+    public List<RealEarthquakeData> databaseGempa = new List<RealEarthquakeData>();
+
+    public bool Valid { get { return aktif && sesar != null; } }
+
+    public bool PunyaDatabase { get { return databaseGempa != null && databaseGempa.Count > 0; } }
+
+    public string NamaTampil
+    {
+        get
+        {
+            if (!string.IsNullOrEmpty(namaSesar)) return namaSesar;
+            return sesar != null ? sesar.gameObject.name : "Tanpa Nama";
+        }
+    }
+}
+
+[System.Serializable]
 public class RealEarthquakeData
 {
     public string eventName = "Simulasi Sesar Lembang"; 
@@ -27,9 +53,6 @@ public class EarthquakeSimulator : MonoBehaviour
 
     [Header("Referensi GPS Evakuasi")]
     public GameObject gpsLineObject; 
-
-    [Header("Database Gempa Dunia Nyata")]
-    public List<RealEarthquakeData> earthquakeDatabase;
 
     [Header("Referensi UI & Audio")]
     public PanicUIManager panicUI;
@@ -62,6 +85,10 @@ public class EarthquakeSimulator : MonoBehaviour
     public ManajerRetakDinamis manajerRetakDinding;
     public ManajerRetakDinamis manajerRetakLantai;
 
+    [Header("Pohon Roboh")]
+    [Tooltip("Komponen PohonRobohManager. Kosongkan untuk dicari otomatis saat gempa mulai.")]
+    public PohonRobohManager pohonRoboh;
+
     [Header("Rumus Perhitungan Kekuatan Gempa (HitungUM)")]
     [Tooltip("SR di bawah nilai ini dianggap tidak terasa sama sekali")]
     public float magnitudeThreshold = 3.0f;
@@ -75,22 +102,12 @@ public class EarthquakeSimulator : MonoBehaviour
     public float softSoilBonus = 0.8f;
 
     [Header("Jarak dari Pusat Gempa")]
-    [HideInInspector]
-    public Transform pusatGempa;
-    [Tooltip("Berapa unit Unity setara 1 km (default 1000, asumsi 1 unit = 1 meter). Selalu dipakai di semua mode.")]
+    [Tooltip("Berapa unit Unity setara 1 km (default 1000, asumsi 1 unit = 1 meter).")]
     public float unitPerKm = 1000f;
 
-    [Header("Episentrum Acak")]
-    [HideInInspector]
-    public bool jarakAcak = true;
-    [HideInInspector]
-    public float jarakMinKm = 2f;
-    [HideInInspector]
-    public float jarakMaksKm = 40f;
-
-    [Header("Sampling dari Alur Sesar (opsional, prioritas tertinggi)")]
-    [Tooltip("Kalau diisi, episentrum akan diambil dari titik acak SEPANJANG garis sesar ini, bukan lingkaran acak sembarang arah")]
-    public SesarLembang sesarLembang;
+    [Header("Sesar & Database Gempa Per Sesar")]
+    [Tooltip("Tiap entri = satu sesar + database gempanya sendiri. Saat gempa dipicu, sistem memilih SATU sesar aktif secara acak, lalu episentrum DAN data gempa (SR, durasi, kedalaman, dll) diambil dari entri yang sama. Sesar yang nonaktif, tanpa referensi, atau databasenya kosong tidak ikut terpilih. Kalau tidak ada satu pun yang memenuhi, gempa tidak dijalankan dan muncul error di Console.")]
+    public List<SumberSesar> daftarSesar = new List<SumberSesar>();
 
     [Header("Bobot Guncangan Per-Sumbu (3 Axis)")]
     [Tooltip("Kalikan kekuatan guncangan per sumbu. X=kiri-kanan, Y=atas-bawah, Z=depan-belakang. Set ke 0 untuk mematikan sumbu tertentu.")]
@@ -105,15 +122,11 @@ public class EarthquakeSimulator : MonoBehaviour
     private Coroutine gempaCoroutineAktif;
     private RealEarthquakeData dataGempaAktif;
     private Vector3 posisiEpisentrumSaatIni;
+    private string namaSumberEpisentrumSaatIni = "-";
 
     void Start()
     {
         if (cameraOffset != null) originalLocalPos = cameraOffset.localPosition;
-
-        if (earthquakeDatabase.Count == 0)
-        {
-            earthquakeDatabase.Add(new RealEarthquakeData());
-        }
 
         if (earthquakeAudioSource != null)
         {
@@ -150,53 +163,53 @@ public class EarthquakeSimulator : MonoBehaviour
 
     /// <summary>
     /// Hitung jarak dari pemain (VR/PC, otomatis pilih yang aktif) ke episentrum
-    /// gempa saat ini, dalam kilometer. Kalau 'jarakAcak' aktif, pakai posisi
-    /// episentrum acak yang di-generate saat gempa dimulai. Kalau tidak,
-    /// pakai Transform 'pusatGempa' tetap. Mengembalikan 0 kalau keduanya
-    /// tidak tersedia (jarak diabaikan, cuma SR yang berpengaruh).
+    /// gempa saat ini, dalam kilometer. Episentrum di-generate dari sesar terpilih
+    /// saat gempa dimulai. Mengembalikan 0 kalau pemain tidak ditemukan
+    /// (jarak diabaikan, cuma SR yang berpengaruh).
     /// </summary>
     private float HitungJarakKmSaatIni()
     {
         Transform playerAktif = TentukanPlayerAktif();
         if (playerAktif == null) return 0f;
 
-        if (jarakAcak || sesarLembang != null)
-        {
-            float jarakUnit = Vector3.Distance(posisiEpisentrumSaatIni, playerAktif.position);
-            return jarakUnit / unitPerKm;
-        }
-
-        if (pusatGempa == null) return 0f;
-
-        float jarakUnitTetap = Vector3.Distance(pusatGempa.position, playerAktif.position);
-        return jarakUnitTetap / unitPerKm;
+        float jarakUnit = Vector3.Distance(posisiEpisentrumSaatIni, playerAktif.position);
+        return jarakUnit / unitPerKm;
     }
 
     /// <summary>
-    /// Generate posisi episentrum untuk gempa baru. Prioritas:
-    /// 1. Kalau 'sesarLembang' diisi, ambil titik acak SEPANJANG garis sesar itu.
-    /// 2. Kalau tidak, generate lingkaran acak (arah + jarak) dari posisi pemain.
+    /// Pilih SATU entri sesar secara acak (toggle menyala, referensi terisi, database tidak kosong).
+    /// Mengembalikan null kalau tidak ada sesar yang memenuhi.
+    /// Entri yang dikembalikan dipakai untuk DUA hal sekaligus: sumber episentrum
+    /// dan sumber database gempa, sehingga keduanya selalu sinkron.
     /// </summary>
-    private void GenerateEpisentrumAcak()
+    private SumberSesar PilihSumberSesarAcak()
     {
-        if (sesarLembang != null)
+        List<SumberSesar> kandidat = new List<SumberSesar>();
+        if (daftarSesar != null)
         {
-            posisiEpisentrumSaatIni = sesarLembang.AmbilTitikAcakSepanjangSesar();
-            Debug.Log($"<color=magenta>[Episentrum]</color> Diambil dari alur Sesar Lembang: {posisiEpisentrumSaatIni}");
-            return;
+            foreach (SumberSesar s in daftarSesar)
+            {
+                if (s == null || !s.Valid) continue;
+
+                if (s.PunyaDatabase)
+                    kandidat.Add(s);
+                else
+                    Debug.LogWarning($"[Gempa] Sesar '{s.NamaTampil}' aktif tapi database gempanya kosong, dilewati.");
+            }
         }
 
-        Transform playerAktif = TentukanPlayerAktif();
-        Vector3 posisiAcuan = playerAktif != null ? playerAktif.position : Vector3.zero;
+        if (kandidat.Count == 0) return null;
+        return kandidat[Random.Range(0, kandidat.Count)];
+    }
 
-        float sudutAcak = Random.Range(0f, 360f);
-        float jarakKmAcak = Random.Range(jarakMinKm, jarakMaksKm);
-        float jarakUnitAcak = jarakKmAcak * unitPerKm;
-
-        Vector3 arahAcak = Quaternion.Euler(0, sudutAcak, 0) * Vector3.forward;
-        posisiEpisentrumSaatIni = posisiAcuan + arahAcak * jarakUnitAcak;
-
-        Debug.Log($"<color=magenta>[Episentrum]</color> Lingkaran acak: {jarakKmAcak:F1} km, arah: {sudutAcak:F0}\u00b0");
+    /// <summary>
+    /// Set episentrum gempa baru ke titik acak SEPANJANG garis sesar yang sudah terpilih.
+    /// </summary>
+    private void GenerateEpisentrumDariSesar(SumberSesar sumber)
+    {
+        posisiEpisentrumSaatIni = sumber.sesar.AmbilTitikAcakSepanjangSesar();
+        namaSumberEpisentrumSaatIni = sumber.NamaTampil;
+        Debug.Log($"<color=magenta>[Episentrum]</color> Diambil dari alur sesar '{namaSumberEpisentrumSaatIni}': {posisiEpisentrumSaatIni}");
     }
 
     private Transform TentukanPlayerAktif()
@@ -210,12 +223,25 @@ public class EarthquakeSimulator : MonoBehaviour
         return null;
     }
 
+    /// <summary>
+    /// Method publik: pilih data gempa acak dari database, lalu jalankan simulasi.
+    /// </summary>
     public void MulaiGempaAcak()
     {
         if (isQuaking) return;
 
-        int randomIndex = Random.Range(0, earthquakeDatabase.Count);
-        RealEarthquakeData selectedBaseData = earthquakeDatabase[randomIndex];
+        // 1) Pilih sesar dulu - ini menentukan episentrum SEKALIGUS database gempa
+        SumberSesar sumberTerpilih = PilihSumberSesarAcak();
+        if (sumberTerpilih == null)
+        {
+            Debug.LogError("[Gempa] Tidak ada sesar yang bisa dipakai. Pastikan minimal satu entri di 'Daftar Sesar' aktif, punya referensi sesar, dan databasenya terisi.");
+            return;
+        }
+
+        // 2) Pilih satu gempa acak dari database sesar tersebut
+        string namaDatabaseDipakai = "Database " + sumberTerpilih.NamaTampil;
+        int randomIndex = Random.Range(0, sumberTerpilih.databaseGempa.Count);
+        RealEarthquakeData selectedBaseData = sumberTerpilih.databaseGempa[randomIndex];
 
         RealEarthquakeData finalDataToPlay = new RealEarthquakeData
         {
@@ -236,17 +262,20 @@ public class EarthquakeSimulator : MonoBehaviour
             finalDataToPlay.richterScale += Random.Range(-richterVariance, richterVariance);
         }
 
-        if (jarakAcak || sesarLembang != null) GenerateEpisentrumAcak();
+        // 3) Episentrum diambil dari sesar yang SAMA dengan database di atas
+        GenerateEpisentrumDariSesar(sumberTerpilih);
 
         float jarakKmAwal = HitungJarakKmSaatIni();
         finalDataToPlay.unityMagnitude = HitungUM(finalDataToPlay.richterScale, finalDataToPlay.kedalamanKm, finalDataToPlay.tanahLunak, jarakKmAwal);
 
         // --- LOG RINGKASAN GEMPA YANG DIPILIH ---
         Debug.Log(
-            $"<color=#FF0E0E><b>[Gempa Dipilih]</b></color> " +
+            $"<color=#FFD700><b>[Gempa Dipilih]</b></color> " +
             $"Event: <b>{finalDataToPlay.eventName}</b> | " +
             $"SR: <b>{finalDataToPlay.richterScale:F2}</b> | " +
             $"Durasi: <b>{finalDataToPlay.duration:F1} detik</b> | " +
+            $"Database: <b>{namaDatabaseDipakai}</b> | " +
+            $"Sumber Episentrum: <b>{namaSumberEpisentrumSaatIni}</b> | " +
             $"Jarak Episentrum: <b>{jarakKmAwal:F2} km</b> | " +
             $"Kedalaman: {finalDataToPlay.kedalamanKm:F1} km | " +
             $"Tanah Lunak: {finalDataToPlay.tanahLunak} | " +
@@ -265,6 +294,8 @@ public class EarthquakeSimulator : MonoBehaviour
             StopCoroutine(gempaCoroutineAktif);
             gempaCoroutineAktif = null;
         }
+
+        if (pohonRoboh != null) pohonRoboh.BatalkanJadwalJatuh();
 
         if (cameraOffset != null) cameraOffset.localPosition = originalLocalPos;
         isQuaking = false;
@@ -325,6 +356,12 @@ public class EarthquakeSimulator : MonoBehaviour
                 if (manajerRetakLantai == null && m.tagPermukaan == "Lantai") manajerRetakLantai = m;
             }
         }
+
+        // Pohon roboh berdasarkan SR (hanya pohon di sekitar pemain)
+        if (pohonRoboh == null) pohonRoboh = FindObjectOfType<PohonRobohManager>();
+        Transform playerUntukPohon = TentukanPlayerAktif();
+        if (pohonRoboh != null && playerUntukPohon != null)
+            pohonRoboh.MulaiGempa(activeData.richterScale, activeData.duration, playerUntukPohon.position);
 
         float waktuUpdateJarakBerikutnya = 0f;
 
