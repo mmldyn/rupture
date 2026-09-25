@@ -75,6 +75,10 @@ public class PohonRobohManager : MonoBehaviour
     [Tooltip("Persentase pohon (di dalam radius) yang roboh pada SR puncak")]
     [Range(0f, 1f)] public float persentasePuncak = 0.6f;
 
+    [Header("Pengecualian")]
+    [Tooltip("Prefab yang TIDAK ikut roboh saat gempa, misalnya rumput atau semak. Isi prefab ASLI yang didaftarkan di Terrain > Paint Trees (Assets/.../grass.prefab), bukan instance di scene.")]
+    public List<GameObject> prefabTidakRoboh = new List<GameObject>();
+
     [Header("Jangkauan")]
     [Tooltip("Hanya pohon dalam radius ini dari pemain (saat gempa mulai) yang bisa roboh, dalam meter")]
     public float radiusRoboh = 80f;
@@ -224,9 +228,12 @@ public class PohonRobohManager : MonoBehaviour
         float radiusKuadrat = radiusRoboh * radiusRoboh;
 
         // 1) Kumpulkan pohon yang berada dalam radius dari pemain
+        TreePrototype[] prototipe = data.treePrototypes;
         List<int> kandidat = new List<int>();
         for (int i = 0; i < semua.Length; i++)
         {
+            if (PrototypeDikecualikan(prototipe, semua[i].prototypeIndex)) continue;
+
             Vector3 posDunia = originTerrain + Vector3.Scale(semua[i].position, ukuran);
             Vector3 selisih = posDunia - posisiPemain;
             selisih.y = 0f;
@@ -268,6 +275,17 @@ public class PohonRobohManager : MonoBehaviour
 
         sisaKuota -= terpilih.Count;
         return terpilih.Count;
+    }
+
+    /// <summary>
+    /// True kalau prototipe pohon ini terdaftar di Prefab Tidak Roboh (misalnya rumput).
+    /// </summary>
+    private bool PrototypeDikecualikan(TreePrototype[] prototipe, int prototypeIndex)
+    {
+        if (prefabTidakRoboh == null || prefabTidakRoboh.Count == 0) return false;
+        if (prototypeIndex < 0 || prototypeIndex >= prototipe.Length) return false;
+
+        return prefabTidakRoboh.Contains(prototipe[prototypeIndex].prefab);
     }
 
     private bool BuatPohonGameObject(Terrain terrain, TreeInstance inst, float durasiGempa)

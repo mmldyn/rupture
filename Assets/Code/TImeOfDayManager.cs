@@ -1,4 +1,7 @@
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 [ExecuteInEditMode]
 public class TimeOfDayManager : MonoBehaviour
@@ -28,6 +31,9 @@ public class TimeOfDayManager : MonoBehaviour
     public Color fogSore = new Color(0.9f, 0.6f, 0.4f);  
     public Color fogMalam = new Color(0.05f, 0.05f, 0.08f); // Dibuat lebih gelap agar bintang terlihat jelas
 
+    // Dipakai untuk menunda toggle bintang saat OnValidate (lihat UpdateBintang)
+    private bool togglePendingSaatValidate;
+
     void Start()
     {
         if (Application.isPlaying && randomizeOnStart)
@@ -40,6 +46,10 @@ public class TimeOfDayManager : MonoBehaviour
 
     void OnValidate()
     {
+        // OnValidate berjalan di luar Play Mode (misalnya saat menggeser slider di Inspector).
+        // Toggle GameObject bintang tidak boleh terjadi langsung di sini (lihat UpdateBintang),
+        // jadi kita tunda satu frame lewat EditorApplication.delayCall.
+        togglePendingSaatValidate = true;
         UpdateSunRotation();
     }
 
@@ -105,14 +115,31 @@ public class TimeOfDayManager : MonoBehaviour
         // Bintang aktif dari jam 18.00 sore hingga 05.30 pagi
         bool isMalam = (currentTime >= 18f || currentTime < 5.5f);
 
-        // Mengaktifkan atau menonaktifkan GameObject Particle System secara langsung
-        if (bintangMalam.gameObject.activeSelf != isMalam)
+        if (bintangMalam.gameObject.activeSelf == isMalam) return;
+
+#if UNITY_EDITOR
+        if (togglePendingSaatValidate && !Application.isPlaying)
         {
-            bintangMalam.gameObject.SetActive(isMalam);
-            if (isMalam && !bintangMalam.isPlaying)
+            togglePendingSaatValidate = false;
+            ParticleSystem target = bintangMalam;
+            EditorApplication.delayCall += () =>
             {
-                bintangMalam.Play();
-            }
+                if (target == null) return;
+                bool masihMalam = (currentTime >= 18f || currentTime < 5.5f);
+                if (target.gameObject.activeSelf != masihMalam)
+                {
+                    target.gameObject.SetActive(masihMalam);
+                    if (masihMalam && !target.isPlaying) target.Play();
+                }
+            };
+            return;
+        }
+#endif
+
+        bintangMalam.gameObject.SetActive(isMalam);
+        if (isMalam && !bintangMalam.isPlaying)
+        {
+            bintangMalam.Play();
         }
     }
 }
